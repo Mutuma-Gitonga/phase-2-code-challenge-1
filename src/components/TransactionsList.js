@@ -1,7 +1,15 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList() {
+function TransactionsList({transactionsList}) {
+  
+  // const newFilteredList = transactionsList.filter(transaction => {
+  //   if(searchChar === "") {
+  //     return true;
+  //   } 
+  //   return transaction.description.toLowerCase().split(" ").join("").includes(searchChar)
+  // });
+
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -19,7 +27,11 @@ function TransactionsList() {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {/* render a list of <Transaction> components here */}
+        {
+          transactionsList.map((transaction) => (
+            <Transaction key={transaction.id} transaction={transaction} />
+          ))
+        }
       </tbody>
     </table>
   );
